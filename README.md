@@ -12,3 +12,23 @@ Audit konfigurasi Nginx untuk kerentanan keamanan berikut ini:
 **CVE-2026-113425**: Kerentanan _use-after-free_ pada _Mail Proxy Module_ ketika klien memutus koneksi selama proses autentikasi melalui `auth_http`. Dapat menyebabkan _crash_ atau potensi eksekusi kode.
 
 
+## Cara Menjalankan
+Simpan script di server NGINX, lalu:
+```bash
+chmod +x nginx_cve_audit.sh
+sudo ./nginx_cve_audit.sh
+```
+Kalau NGINX menggunakan lokasi binary khusus:
+```bash
+sudo NGINX_BIN=/usr/sbin/nginx ./nginx_cve_audit.sh
+```
+Simpan hasil audit ke file:
+```bash
+sudo ./nginx_cve_audit.sh 2>&1 | tee nginx_cve_audit_$(date +%F).log
+```
+
+
+## Cara membaca hasil audit
+[RISK] = Fitur terdeteksi aktif dan versi belum diperbarui; indikasi risiko tinggi.
+[WARN] = Ada konfigurasi yang perlu ditinjau manual.
+[OK] = Pola exposure tidak ditemukan, atau versi sudah diperbarui.
