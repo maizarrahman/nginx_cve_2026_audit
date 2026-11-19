@@ -30,5 +30,7 @@ sudo ./nginx_cve_audit.sh 2>&1 | tee nginx_cve_audit_$(date +%F).log
 
 ## Cara membaca hasil audit
 [RISK] = Fitur terdeteksi aktif dan versi belum diperbarui; indikasi risiko tinggi.
+
 [WARN] = Ada konfigurasi yang perlu ditinjau manual.
+
 [OK] = Pola exposure tidak ditemukan, atau versi sudah diperbarui.
